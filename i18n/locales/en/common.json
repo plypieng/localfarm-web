@@ -1,0 +1,83 @@
+{
+  "app_name": "LocalFarm AI",
+  "navigation": {
+    "dashboard": "Dashboard",
+    "planner": "Crop Planner",
+    "calendar": "Calendar",
+    "analytics": "Analytics",
+    "community": "Knowledge Base",
+    "chat": "AI Assistant"
+  },
+  "dashboard": {
+    "title": "Farm Dashboard",
+    "weather_forecast": "Weather Forecast",
+    "upcoming_activities": "Upcoming Activities",
+    "farm_metrics": "Farm Metrics",
+    "crop_recommendations": "AI Crop Recommendations",
+    "yield_forecast": "Yield Forecast",
+    "profit_analysis": "Profit Analysis",
+    "view_details": "View Details"
+  },
+  "planner": {
+    "title": "Crop Layout Planner",
+    "select_crops": "Select Crops",
+    "optimization_settings": "Optimization Settings",
+    "generate_plan": "Generate Plan",
+    "save_plan": "Save Plan",
+    "reset": "Reset",
+    "area": "Area",
+    "soil_type": "Soil Type",
+    "sunlight": "Sunlight Exposure"
+  },
+  "calendar": {
+    "title": "Crop Scheduling Calendar",
+    "add_activity": "Add Activity",
+    "schedule_activity": "Schedule Activity",
+    "activity_type": "Activity Type",
+    "crop_type": "Crop Type",
+    "date": "Date",
+    "time": "Time",
+    "notes": "Notes",
+    "save": "Save"
+  },
+  "analytics": {
+    "title": "Farm Analytics",
+    "filter_by": "Filter By",
+    "date_range": "Date Range",
+    "crop_type": "Crop Type",
+    "season": "Season",
+    "compare": "Compare",
+    "yield_comparison": "Yield Comparison",
+    "cost_revenue": "Cost vs Revenue",
+    "export_data": "Export Data"
+  },
+  "community": {
+    "title": "Knowledge Base",
+    "search": "Search Articles",
+    "featured": "Featured Articles",
+    "categories": "Categories",
+    "recent": "Recent Articles",
+    "read_more": "Read More"
+  },
+  "chat": {
+    "title": "AI Assistant",
+    "placeholder": "Ask farming question...",
+    "send": "Send",
+    "clear": "Clear Chat",
+    "suggested_topics": "Suggested Topics"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred.",
+    "try_again": "Try Again",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "language": "Language",
+    "english": "English",
+    "japanese": "Japanese",
+    "dark_mode": "Dark Mode",
+    "light_mode": "Light Mode"
+  }
+}

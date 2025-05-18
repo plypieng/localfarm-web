@@ -1,0 +1,86 @@
+{
+  "app_name": "ローカルファームAI",
+  "strategic_planning": "戦略的計画",
+  "farmer": "農家",
+  "niigata_japan": "新潟、日本",
+  "navigation": {
+    "dashboard": "ダッシュボード",
+    "planner": "作物配置計画",
+    "calendar": "カレンダー",
+    "analytics": "分析",
+    "community": "知識ベース",
+    "chat": "AIアシスタント"
+  },
+  "dashboard": {
+    "title": "農場ダッシュボード",
+    "weather_forecast": "天気予報",
+    "upcoming_activities": "今後の活動",
+    "farm_metrics": "農場メトリクス",
+    "crop_recommendations": "AI作物推奨",
+    "yield_forecast": "収穫予測",
+    "profit_analysis": "利益分析",
+    "view_details": "詳細を見る"
+  },
+  "planner": {
+    "title": "作物レイアウトプランナー",
+    "select_crops": "作物の選択",
+    "optimization_settings": "最適化設定",
+    "generate_plan": "計画を作成",
+    "save_plan": "計画を保存",
+    "reset": "リセット",
+    "area": "面積",
+    "soil_type": "土壌タイプ",
+    "sunlight": "日照条件"
+  },
+  "calendar": {
+    "title": "作物スケジュールカレンダー",
+    "add_activity": "活動を追加",
+    "schedule_activity": "活動をスケジュール",
+    "activity_type": "活動タイプ",
+    "crop_type": "作物タイプ",
+    "date": "日付",
+    "time": "時間",
+    "notes": "メモ",
+    "save": "保存"
+  },
+  "analytics": {
+    "title": "農場分析",
+    "filter_by": "フィルター",
+    "date_range": "日付範囲",
+    "crop_type": "作物タイプ",
+    "season": "季節",
+    "compare": "比較",
+    "yield_comparison": "収穫比較",
+    "cost_revenue": "コスト対収益",
+    "export_data": "データ出力"
+  },
+  "community": {
+    "title": "知識ベース",
+    "search": "記事を検索",
+    "featured": "注目記事",
+    "categories": "カテゴリー",
+    "recent": "最近の記事",
+    "read_more": "続きを読む"
+  },
+  "chat": {
+    "title": "AIアシスタント",
+    "placeholder": "農業に関する質問をする...",
+    "send": "送信",
+    "clear": "チャットをクリア",
+    "suggested_topics": "おすすめのトピック"
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "error": "エラーが発生しました。",
+    "try_again": "再試行",
+    "cancel": "キャンセル",
+    "save": "保存",
+    "delete": "削除",
+    "edit": "編集",
+    "language": "言語",
+    "english": "英語",
+    "japanese": "日本語",
+    "dark_mode": "ダークモード",
+    "light_mode": "ライトモード"
+  }
+}

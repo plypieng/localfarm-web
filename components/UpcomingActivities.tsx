@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 type Activity = {
   id: string;
@@ -13,42 +14,44 @@ type Activity = {
 };
 
 export function UpcomingActivities() {
+  const t = useTranslations();
+  
   // Mock data for demonstration
   const activities: Activity[] = [
     {
       id: '1',
-      title: 'Rice Field Irrigation',
-      date: 'Today',
+      title: t('activities.rice_field_irrigation'),
+      date: t('weather.today'),
       time: '2:00 PM',
-      type: 'Watering',
-      location: 'North Field',
+      type: t('activity_types.watering'),
+      location: t('locations.north_field'),
       priority: 'high',
     },
     {
       id: '2',
-      title: 'Apply Organic Fertilizer',
-      date: 'Tomorrow',
+      title: t('activities.apply_organic_fertilizer'),
+      date: t('activities.tomorrow'),
       time: '9:00 AM',
-      type: 'Fertilizing',
-      location: 'Vegetable Garden',
+      type: t('activity_types.fertilizing'),
+      location: t('locations.vegetable_garden'),
       priority: 'medium',
     },
     {
       id: '3',
-      title: 'Harvest Early Vegetables',
+      title: t('activities.harvest_early_vegetables'),
       date: 'May 20',
       time: '7:00 AM',
-      type: 'Harvesting',
-      location: 'East Plot',
+      type: t('activity_types.harvesting'),
+      location: t('locations.east_plot'),
       priority: 'medium',
     },
     {
       id: '4',
-      title: 'Equipment Maintenance',
+      title: t('activities.equipment_maintenance'),
       date: 'May 21',
       time: '3:30 PM',
-      type: 'Maintenance',
-      location: 'Workshop',
+      type: t('activity_types.maintenance'),
+      location: t('locations.workshop'),
       priority: 'low',
     },
   ];
@@ -67,16 +70,22 @@ export function UpcomingActivities() {
   };
 
   const getActivityIcon = (type: string) => {
+    const watering = t('activity_types.watering');
+    const fertilizing = t('activity_types.fertilizing');
+    const harvesting = t('activity_types.harvesting');
+    const planting = t('activity_types.planting');
+    const maintenance = t('activity_types.maintenance');
+    
     switch (type) {
-      case 'Watering':
+      case watering:
         return '💧';
-      case 'Fertilizing':
+      case fertilizing:
         return '🧪';
-      case 'Harvesting':
+      case harvesting:
         return '🌾';
-      case 'Planting':
+      case planting:
         return '🌱';
-      case 'Maintenance':
+      case maintenance:
         return '🔧';
       default:
         return '📋';
@@ -101,7 +110,7 @@ export function UpcomingActivities() {
                   activity.priority
                 )}`}
               >
-                {activity.priority}
+                {t(`priorities.${activity.priority}`)}
               </span>
             </div>
             <p className="text-sm text-gray-600 mt-1">
@@ -114,7 +123,7 @@ export function UpcomingActivities() {
       
       <div className="pt-2">
         <Link href="/calendar" className="text-primary-600 text-sm font-medium hover:underline flex items-center justify-center">
-          View full calendar
+          {t('calendar.view_full_calendar')}
           <span className="ml-1">→</span>
         </Link>
       </div>

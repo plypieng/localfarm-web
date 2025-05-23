@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
  
-export const locales = ['en', 'ja'];
-export const defaultLocale = 'en';
+export const locales = ['ja', 'en'];
+export const defaultLocale = 'ja';
  
 // This is the default messages loader used for server components
 export default async function getMessages(locale: string) {

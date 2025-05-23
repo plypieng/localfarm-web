@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 type Article = {
   id: string;
@@ -17,6 +18,7 @@ type Article = {
 };
 
 export function ArticleList() {
+  const t = useTranslations();
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   
   // Mock data for demonstration
@@ -49,7 +51,7 @@ export function ArticleList() {
     },
     {
       id: '3',
-      title: 'Niigata's Changing Climate: Adapting Rice Varieties',
+      title: 'Niigata\'s Changing Climate: Adapting Rice Varieties',
       excerpt: 'An analysis of climate trends in Niigata and recommended rice varieties for changing conditions.',
       author: 'Takeshi Watanabe',
       authorRole: 'Climate Researcher',
@@ -76,7 +78,7 @@ export function ArticleList() {
     {
       id: '5',
       title: 'Smart Farming Technology for Small-Scale Farms',
-      excerpt: 'Affordable IoT and automation solutions specifically designed for Niigata's small farmers.',
+      excerpt: 'Affordable IoT and automation solutions specifically designed for Niigata\'s small farmers.',
       author: 'Akira Suzuki',
       authorRole: 'AgTech Specialist',
       date: 'May 1, 2025',
@@ -97,7 +99,7 @@ export function ArticleList() {
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold">Recent Articles</h2>
+        <h2 className="text-xl font-semibold">{t('community.recent_articles')}</h2>
         <div className="flex space-x-2">
           <button
             onClick={() => setActiveCategory(null)}
@@ -107,7 +109,7 @@ export function ArticleList() {
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             }`}
           >
-            All
+            {t('community.all')}
           </button>
           {categories.map((category) => (
             <button
@@ -147,7 +149,7 @@ export function ArticleList() {
                 <span className="mx-2">•</span>
                 <span>{article.date}</span>
                 <span className="mx-2">•</span>
-                <span>{article.readTime} read</span>
+                <span>{article.readTime} {t('community.read')}</span>
               </div>
               <h3 className="text-lg font-semibold mb-1 hover:text-primary-600">
                 <a href="#">{article.title}</a>
@@ -177,7 +179,7 @@ export function ArticleList() {
       
       <div className="mt-6 flex justify-center">
         <button className="px-4 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50">
-          Load More Articles
+          {t('community.load_more')}
         </button>
       </div>
     </div>

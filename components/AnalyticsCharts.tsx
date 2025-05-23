@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import {
   LineChart,
   Line,
@@ -46,6 +47,7 @@ const climateData = [
 ];
 
 export function AnalyticsCharts({ chartType }: AnalyticsChartsProps) {
+  const t = useTranslations();
   const [dataView, setDataView] = useState<'annual' | 'seasonal'>('annual');
 
   return (
@@ -62,7 +64,7 @@ export function AnalyticsCharts({ chartType }: AnalyticsChartsProps) {
                     : 'bg-gray-100 text-gray-600'
                 }`}
               >
-                Annual
+                {t('analytics.annual')}
               </button>
               <button
                 onClick={() => setDataView('seasonal')}
@@ -72,10 +74,10 @@ export function AnalyticsCharts({ chartType }: AnalyticsChartsProps) {
                     : 'bg-gray-100 text-gray-600'
                 }`}
               >
-                Seasonal
+                {t('analytics.seasonal')}
               </button>
             </div>
-            <div className="text-sm text-gray-500">Yield in tons/hectare</div>
+            <div className="text-sm text-gray-500">{t('analytics.yield_in_tons')}</div>
           </div>
 
           <ResponsiveContainer width="100%" height="90%">
@@ -85,13 +87,13 @@ export function AnalyticsCharts({ chartType }: AnalyticsChartsProps) {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar dataKey="rice" name="Rice" fill="#4ade80" />
-              <Bar dataKey="vegetables" name="Vegetables" fill="#fb923c" />
-              <Bar dataKey="fruits" name="Fruits" fill="#60a5fa" />
+              <Bar dataKey="rice" name={t('community.category.rice')} fill="#4ade80" />
+              <Bar dataKey="vegetables" name={t('community.category.vegetables')} fill="#fb923c" />
+              <Bar dataKey="fruits" name={t('community.category.fruits')} fill="#60a5fa" />
               <Line
                 type="monotone"
                 dataKey="average"
-                name="Avg. Yield"
+                name={t('analytics.avg_yield')}
                 stroke="#ef4444"
                 strokeWidth={2}
               />
@@ -104,9 +106,9 @@ export function AnalyticsCharts({ chartType }: AnalyticsChartsProps) {
         <>
           <div className="flex justify-between items-center mb-4">
             <div className="text-sm text-gray-500">
-              Climate data influences crop performance
+              {t('analytics.climate_influence')}
             </div>
-            <div className="text-sm text-gray-500">2025 Data</div>
+            <div className="text-sm text-gray-500">{t('analytics.current_year_data')}</div>
           </div>
 
           <ResponsiveContainer width="100%" height="90%">
@@ -121,7 +123,7 @@ export function AnalyticsCharts({ chartType }: AnalyticsChartsProps) {
                 yAxisId="left"
                 type="monotone"
                 dataKey="temperature"
-                name="Temperature (°C)"
+                name={t('analytics.temperature_c')}
                 stroke="#ef4444"
                 strokeWidth={2}
               />
@@ -129,7 +131,7 @@ export function AnalyticsCharts({ chartType }: AnalyticsChartsProps) {
                 yAxisId="right"
                 type="monotone"
                 dataKey="rainfall"
-                name="Rainfall (mm)"
+                name={t('analytics.rainfall_mm')}
                 stroke="#60a5fa"
                 strokeWidth={2}
               />
@@ -137,7 +139,7 @@ export function AnalyticsCharts({ chartType }: AnalyticsChartsProps) {
                 yAxisId="right"
                 type="monotone"
                 dataKey="humidity"
-                name="Humidity (%)"
+                name={t('analytics.humidity_percent')}
                 stroke="#4ade80"
                 strokeWidth={2}
               />

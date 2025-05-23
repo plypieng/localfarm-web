@@ -2,13 +2,19 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Loader } from '@googlemaps/js-api-loader';
+import { useTranslations } from 'next-intl';
 
 export function MapPlanner() {
+  const t = useTranslations();
   const mapRef = useRef<HTMLDivElement>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [activeLayer, setActiveLayer] = useState<'satellite' | 'soil' | 'terrain'>('satellite');
 
   useEffect(() => {
+    // Track all created map objects for proper cleanup
+    let mapInstance: google.maps.Map | null = null;
+    const mapElements: (google.maps.Polygon | google.maps.Marker)[] = [];
+    
     // For demo purposes, we're not using an actual API key
     // In a real application, you'd store this in environment variables
     const loader = new Loader({
@@ -16,15 +22,16 @@ export function MapPlanner() {
       version: 'weekly',
     });
 
-    loader
-      .load()
-      .then(() => {
+    const initializeMap = async () => {
+      try {
+        await loader.load();
+        
         if (!mapRef.current) return;
 
         // Niigata, Japan coordinates
         const niigata = { lat: 37.9161, lng: 139.0364 };
         
-        const map = new google.maps.Map(mapRef.current, {
+        mapInstance = new google.maps.Map(mapRef.current, {
           center: niigata,
           zoom: 15,
           mapTypeId: 'satellite',
@@ -57,7 +64,11 @@ export function MapPlanner() {
 
         // Add the polygons to the map
         const cropColors = ['#4ade80', '#fbbf24', '#60a5fa'];
-        const cropNames = ['Rice Field A', 'Vegetable Garden', 'Rice Field B'];
+        const cropNames = [
+          t('planner.crop_names.rice_field_a'),
+          t('planner.crop_names.vegetable_garden'),
+          t('planner.crop_names.rice_field_b')
+        ];
         
         farmPlots.forEach((plotCoords, index) => {
           const farmPlot = new google.maps.Polygon({
@@ -70,16 +81,17 @@ export function MapPlanner() {
             editable: true,
           });
           
-          farmPlot.setMap(map);
+          farmPlot.setMap(mapInstance);
+          mapElements.push(farmPlot);
           
           // Add a label to each plot
           const bounds = new google.maps.LatLngBounds();
           plotCoords.forEach(coord => bounds.extend(coord));
           const center = bounds.getCenter();
           
-          new google.maps.Marker({
+          const marker = new google.maps.Marker({
             position: center,
-            map: map,
+            map: mapInstance,
             label: {
               text: cropNames[index],
               color: 'black',
@@ -90,14 +102,33 @@ export function MapPlanner() {
               scale: 0,
             },
           });
+          mapElements.push(marker);
         });
 
         setMapLoaded(true);
-      })
-      .catch(e => {
+      } catch (e) {
         // In a real app, we'd handle the error better
         console.error('Error loading Google Maps API:', e);
+      }
+    };
+
+    initializeMap();
+
+    // Cleanup function to remove all map elements when component unmounts
+    return () => {
+      // Remove all map elements first
+      mapElements.forEach(element => {
+        if (element instanceof google.maps.Marker || element instanceof google.maps.Polygon) {
+          element.setMap(null);
+        }
       });
+      
+      // Let React properly manage the DOM
+      if (mapRef.current && mapInstance) {
+        // Allow React to handle the DOM cleanup
+        mapInstance = null;
+      }
+    };
   }, []);
 
   return (
@@ -112,7 +143,7 @@ export function MapPlanner() {
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             }`}
           >
-            Satellite View
+            {t('planner.satellite_view')}
           </button>
           <button
             onClick={() => setActiveLayer('soil')}
@@ -122,7 +153,7 @@ export function MapPlanner() {
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             }`}
           >
-            Soil Analysis
+            {t('planner.soil_analysis')}
           </button>
           <button
             onClick={() => setActiveLayer('terrain')}
@@ -132,15 +163,15 @@ export function MapPlanner() {
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             }`}
           >
-            Terrain
+            {t('planner.terrain')}
           </button>
         </div>
         <div className="space-x-2">
           <button className="px-3 py-1.5 text-sm font-medium bg-white border border-gray-300 rounded-lg">
-            Add Plot
+            {t('planner.add_plot')}
           </button>
           <button className="px-3 py-1.5 text-sm font-medium bg-white border border-gray-300 rounded-lg">
-            Draw Area
+            {t('planner.draw_area')}
           </button>
         </div>
       </div>
@@ -158,8 +189,7 @@ export function MapPlanner() {
       
       <div className="mt-4 text-sm text-gray-500">
         <p>
-          <span className="font-medium">Map Instructions:</span> Drag boundaries to adjust plot sizes. 
-          Click on a plot to select it and view/edit crop assignments.
+          <span className="font-medium">{t('planner.map_instructions')}:</span> {t('planner.map_instructions_text')}
         </p>
       </div>
     </div>

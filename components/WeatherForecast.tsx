@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 
 type ForecastDay = {
   date: string;
@@ -15,6 +16,7 @@ type ForecastDay = {
 };
 
 export function WeatherForecast() {
+  const t = useTranslations();
   const [forecast, setForecast] = useState<ForecastDay[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -31,41 +33,41 @@ export function WeatherForecast() {
           setForecast([
             {
               date: '2025-05-18',
-              day: 'Today',
+              day: t('weather.today'),
               temperature: { min: 18, max: 24 },
-              condition: 'Partly Cloudy',
+              condition: t('weather.partly_cloudy'),
               icon: '⛅',
               precipitation: 10,
             },
             {
               date: '2025-05-19',
-              day: 'Mon',
+              day: t('weather.mon'),
               temperature: { min: 17, max: 23 },
-              condition: 'Sunny',
+              condition: t('weather.sunny'),
               icon: '☀️',
               precipitation: 0,
             },
             {
               date: '2025-05-20',
-              day: 'Tue',
+              day: t('weather.tue'),
               temperature: { min: 16, max: 21 },
-              condition: 'Rain',
+              condition: t('weather.rain'),
               icon: '🌧️',
               precipitation: 60,
             },
             {
               date: '2025-05-21',
-              day: 'Wed',
+              day: t('weather.wed'),
               temperature: { min: 15, max: 20 },
-              condition: 'Heavy Rain',
+              condition: t('weather.heavy_rain'),
               icon: '⛈️',
               precipitation: 80,
             },
             {
               date: '2025-05-22',
-              day: 'Thu',
+              day: t('weather.thu'),
               temperature: { min: 17, max: 22 },
-              condition: 'Cloudy',
+              condition: t('weather.cloudy'),
               icon: '☁️',
               precipitation: 20,
             },
@@ -94,8 +96,8 @@ export function WeatherForecast() {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center text-sm text-gray-600 pb-2 border-b">
-        <span>Niigata, Japan</span>
-        <span>5-day forecast</span>
+        <span>{t('dashboard.location')}</span>
+        <span>{t('dashboard.five_day_forecast')}</span>
       </div>
       
       <div className="space-y-3">
@@ -106,7 +108,9 @@ export function WeatherForecast() {
             <div className="flex-1 ml-2">
               <div className="text-sm font-medium">{day.condition}</div>
               <div className="text-xs text-gray-500">
-                {day.precipitation > 0 ? `${day.precipitation}% chance of rain` : 'No rain expected'}
+                {day.precipitation > 0 
+                  ? t('dashboard.rain_chance', { percentage: day.precipitation })
+                  : t('dashboard.no_rain')}
               </div>
             </div>
             <div className="text-right">
@@ -119,7 +123,7 @@ export function WeatherForecast() {
       
       <div className="pt-2 text-center">
         <button className="text-primary-600 text-sm font-medium hover:underline">
-          View detailed forecast
+          {t('dashboard.view_detailed_forecast')}
         </button>
       </div>
     </div>

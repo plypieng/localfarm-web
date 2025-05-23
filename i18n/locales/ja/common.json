@@ -19,10 +19,16 @@
     "crop_recommendations": "AI作物推奨",
     "yield_forecast": "収穫予測",
     "profit_analysis": "利益分析",
-    "view_details": "詳細を見る"
+    "view_details": "詳細を見る",
+    "location": "新潟、日本",
+    "five_day_forecast": "5日間の予報",
+    "rain_chance": "{percentage}% の確率で雨",
+    "no_rain": "雨の予報なし",
+    "view_detailed_forecast": "詳細な天気予報を見る"
   },
   "planner": {
     "title": "作物レイアウトプランナー",
+    "interactive_map": "対話型フィールドマップ",
     "select_crops": "作物の選択",
     "optimization_settings": "最適化設定",
     "generate_plan": "計画を作成",
@@ -30,18 +36,72 @@
     "reset": "リセット",
     "area": "面積",
     "soil_type": "土壌タイプ",
-    "sunlight": "日照条件"
+    "sunlight": "日照条件",
+    "satellite_view": "衛星画像",
+    "soil_analysis": "土壌分析",
+    "terrain": "地形",
+    "add_plot": "区画を追加",
+    "draw_area": "エリアを描画",
+    "map_instructions": "マップの使用方法",
+    "map_instructions_text": "境界をドラッグして区画サイズを調整。区画をクリックして作物の割り当てを確認・編集できます。",
+    "crop_names": {
+      "rice_field_a": "米田A",
+      "vegetable_garden": "野菜畑",
+      "rice_field_b": "米田B"
+    }
   },
   "calendar": {
-    "title": "作物スケジュールカレンダー",
-    "add_activity": "活動を追加",
-    "schedule_activity": "活動をスケジュール",
-    "activity_type": "活動タイプ",
-    "crop_type": "作物タイプ",
-    "date": "日付",
-    "time": "時間",
-    "notes": "メモ",
-    "save": "保存"
+    "title": "作物カレンダー",
+    "monthly_view": "月別カレンダー表示",
+    "upcoming_tasks": "今後の作業",
+    "add_event": "イベントを追加",
+    "event_type": "イベントタイプ",
+    "planting": "植え付け",
+    "harvesting": "収穫",
+    "fertilizing": "肥料投入",
+    "watering": "水やり",
+    "maintenance": "メンテナンス",
+    "view_full_calendar": "カレンダー全体を表示",
+    "today": "今日",
+    "month": "月",
+    "week": "週"
+  },
+  "activities": {
+    "rice_field_irrigation": "田んぼの潴澄",
+    "apply_organic_fertilizer": "有機肥料の投入",
+    "harvest_early_vegetables": "早期野菜の収穫",
+    "equipment_maintenance": "機器のメンテナンス",
+    "tomorrow": "明日"
+  },
+  "activity_types": {
+    "watering": "水やり",
+    "fertilizing": "肥料投入",
+    "harvesting": "収穫",
+    "planting": "植え付け",
+    "maintenance": "メンテナンス"
+  },
+  "locations": {
+    "north_field": "北の田んぼ",
+    "vegetable_garden": "野菜田",
+    "east_plot": "東の区町",
+    "workshop": "作業場"
+  },
+  "priorities": {
+    "high": "高",
+    "medium": "中",
+    "low": "低"
+  },
+  "seasons": {
+    "spring": "春",
+    "summer": "夏",
+    "fall": "秋",
+    "winter": "冬"
+  },
+  "crops": {
+    "match": "一致",
+    "planting_window": "植え付け時期",
+    "potential_yield": "予想収量",
+    "add_to_planning": "計画に追加"
   },
   "analytics": {
     "title": "農場分析",
@@ -49,10 +109,31 @@
     "date_range": "日付範囲",
     "crop_type": "作物タイプ",
     "season": "季節",
+    "annual": "年次",
+    "seasonal": "季節別",
     "compare": "比較",
     "yield_comparison": "収穫比較",
     "cost_revenue": "コスト対収益",
-    "export_data": "データ出力"
+    "detailed_metrics": "詳細なメトリクス",
+    "export_data": "データ出力",
+    "yield_in_tons": "収量（トン／ヘクタール）",
+    "avg_yield": "平均収量",
+    "climate_influence": "気候データは作物のパフォーマンスに影響します",
+    "current_year_data": "2025年のデータ",
+    "temperature_c": "気温 (°C)",
+    "rainfall_mm": "降水量 (mm)",
+    "humidity_percent": "湿度 (%)"
+  },
+  "metrics": {
+    "crop_yield": "作物収量",
+    "profit_margin": "利益率",
+    "current_year": "現在の年",
+    "rice_kg": "米 (kg)",
+    "vegetables_kg": "野菜 (kg)",
+    "fruits_kg": "果物 (kg)",
+    "revenue_yen": "収益 (¥)",
+    "expenses_yen": "支出 (¥)",
+    "profit_yen": "利益 (¥)"
   },
   "community": {
     "title": "知識ベース",
@@ -60,14 +141,42 @@
     "featured": "注目記事",
     "categories": "カテゴリー",
     "recent": "最近の記事",
-    "read_more": "続きを読む"
+    "recent_articles": "最近の記事",
+    "read_more": "続きを読む",
+    "all": "すべて",
+    "read": "分",
+    "load_more": "もっと記事を読み込む",
+    "category": {
+      "rice": "米",
+      "vegetables": "野菜",
+      "fruits": "果物",
+      "soil": "土壺",
+      "equipment": "機器",
+      "climate": "気候"
+    }
   },
   "chat": {
     "title": "AIアシスタント",
+    "ai_assistant": "農業AIアシスタント",
     "placeholder": "農業に関する質問をする...",
     "send": "送信",
     "clear": "チャットをクリア",
     "suggested_topics": "おすすめのトピック"
+  },
+  "weather": {
+    "today": "今日",
+    "mon": "月",
+    "tue": "火",
+    "wed": "水",
+    "thu": "木",
+    "fri": "金",
+    "sat": "土",
+    "sun": "日",
+    "partly_cloudy": "晴れ時々曇り",
+    "sunny": "晴れ",
+    "rain": "雨",
+    "heavy_rain": "大雨",
+    "cloudy": "曇り"
   },
   "common": {
     "loading": "読み込み中...",
@@ -81,6 +190,8 @@
     "english": "英語",
     "japanese": "日本語",
     "dark_mode": "ダークモード",
-    "light_mode": "ライトモード"
+    "light_mode": "ライトモード",
+    "export_data": "データエクスポート",
+    "new_analysis": "新規分析"
   }
 }

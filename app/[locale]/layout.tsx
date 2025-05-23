@@ -8,18 +8,27 @@ import LanguageSwitcher from '../../components/LanguageSwitcher';
 
 const inter = Inter({ subsets: ['latin'] });
 
+// Generate static params for all supported locales
 export function generateStaticParams() {
   return locales.map(locale => ({ locale }));
 }
 
-export default async function RootLayout({
-  children,
-  params: { locale }
-}: {
-  children: React.ReactNode;
+// Layout component following Next.js 15 requirements for dynamic params
+export default async function RootLayout(props: { 
+  children: React.ReactNode; 
   params: { locale: string };
 }) {
-  // Get messages using our centralized i18n configuration
+  // In Next.js 15.3.2, we need to separate the props extraction to avoid
+  // the "params should be awaited" error
+  const { children } = props;
+  const params = await Promise.resolve(props.params);
+  const locale = await params.locale;
+  
+  if (!locales.includes(locale)) {
+    notFound();
+  }
+  
+  // Get messages for the locale
   const messages = await getMessages(locale);
 
   return (

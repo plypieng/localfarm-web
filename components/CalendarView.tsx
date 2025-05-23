@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isToday, parseISO } from 'date-fns';
 
 type CalendarEvent = {
@@ -13,6 +14,7 @@ type CalendarEvent = {
 };
 
 export function CalendarView() {
+  const t = useTranslations();
   const [currentDate, setCurrentDate] = useState(new Date());
   const [view, setView] = useState<'month' | 'week'>('month');
   
@@ -142,7 +144,7 @@ export function CalendarView() {
             onClick={goToCurrentMonth}
             className="px-3 py-1 text-sm bg-white border border-gray-300 rounded-lg"
           >
-            Today
+            {t('calendar.today')}
           </button>
           <button
             onClick={() => setView('month')}
@@ -152,7 +154,7 @@ export function CalendarView() {
                 : 'bg-white border border-gray-300'
             }`}
           >
-            Month
+            {t('calendar.month')}
           </button>
           <button
             onClick={() => setView('week')}
@@ -162,7 +164,7 @@ export function CalendarView() {
                 : 'bg-white border border-gray-300'
             }`}
           >
-            Week
+            {t('calendar.week')}
           </button>
         </div>
       </div>
@@ -171,7 +173,15 @@ export function CalendarView() {
       <div>
         {/* Day Headers */}
         <div className="grid grid-cols-7 gap-1 mb-2">
-          {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
+          {[
+            t('weather.sun'), 
+            t('weather.mon'), 
+            t('weather.tue'), 
+            t('weather.wed'), 
+            t('weather.thu'), 
+            t('weather.fri'), 
+            t('weather.sat')
+          ].map((day) => (
             <div key={day} className="text-sm font-medium text-center py-2">
               {day}
             </div>
@@ -226,23 +236,23 @@ export function CalendarView() {
       <div className="mt-4 flex justify-center space-x-4 text-xs text-gray-500">
         <div className="flex items-center">
           <span className="w-3 h-3 bg-green-100 border border-green-200 rounded-full mr-1"></span>
-          Planting
+          {t('calendar.planting')}
         </div>
         <div className="flex items-center">
           <span className="w-3 h-3 bg-yellow-100 border border-yellow-200 rounded-full mr-1"></span>
-          Harvesting
+          {t('calendar.harvesting')}
         </div>
         <div className="flex items-center">
           <span className="w-3 h-3 bg-amber-100 border border-amber-200 rounded-full mr-1"></span>
-          Fertilizing
+          {t('calendar.fertilizing')}
         </div>
         <div className="flex items-center">
           <span className="w-3 h-3 bg-blue-100 border border-blue-200 rounded-full mr-1"></span>
-          Watering
+          {t('calendar.watering')}
         </div>
         <div className="flex items-center">
           <span className="w-3 h-3 bg-gray-100 border border-gray-200 rounded-full mr-1"></span>
-          Maintenance
+          {t('calendar.maintenance')}
         </div>
       </div>
     </div>

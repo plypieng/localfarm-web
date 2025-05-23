@@ -1,6 +1,3 @@
 {
-  "/[locale]/page": "app/[locale]/page.js",
-  "/[locale]/analytics/page": "app/[locale]/analytics/page.js",
-  "/[locale]/calendar/page": "app/[locale]/calendar/page.js",
-  "/[locale]/planner/page": "app/[locale]/planner/page.js"
+  "/[locale]/page": "app/[locale]/page.js"
 }

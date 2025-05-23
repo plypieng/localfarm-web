@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import {
   LineChart,
   Line,
@@ -48,6 +49,7 @@ const profitData = [
 type ChartType = 'yield' | 'profit';
 
 export function FarmMetricsChart() {
+  const t = useTranslations();
   const [activeChart, setActiveChart] = useState<ChartType>('yield');
 
   return (
@@ -62,7 +64,7 @@ export function FarmMetricsChart() {
                 : 'bg-white text-gray-600 hover:bg-gray-50'
             }`}
           >
-            Crop Yield
+            {t('metrics.crop_yield')}
           </button>
           <button
             onClick={() => setActiveChart('profit')}
@@ -72,12 +74,12 @@ export function FarmMetricsChart() {
                 : 'bg-white text-gray-600 hover:bg-gray-50'
             }`}
           >
-            Profit Margin
+            {t('metrics.profit_margin')}
           </button>
         </div>
         <div>
           <select className="text-sm border border-gray-300 rounded-md p-2">
-            <option>2025 (Current Year)</option>
+            <option>2025 ({t('metrics.current_year')})</option>
             <option>2024</option>
             <option>2023</option>
           </select>
@@ -95,9 +97,9 @@ export function FarmMetricsChart() {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="rice" stackId="a" fill="#16a34a" name="Rice (kg)" />
-            <Bar dataKey="vegetables" stackId="a" fill="#84cc16" name="Vegetables (kg)" />
-            <Bar dataKey="fruits" stackId="a" fill="#eab308" name="Fruits (kg)" />
+            <Bar dataKey="rice" stackId="a" fill="#16a34a" name={t('metrics.rice_kg')} />
+            <Bar dataKey="vegetables" stackId="a" fill="#84cc16" name={t('metrics.vegetables_kg')} />
+            <Bar dataKey="fruits" stackId="a" fill="#eab308" name={t('metrics.fruits_kg')} />
           </BarChart>
         ) : (
           <LineChart
@@ -109,9 +111,9 @@ export function FarmMetricsChart() {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="revenue" stroke="#16a34a" name="Revenue (¥)" />
-            <Line type="monotone" dataKey="expenses" stroke="#ef4444" name="Expenses (¥)" />
-            <Line type="monotone" dataKey="profit" stroke="#3b82f6" name="Profit (¥)" strokeWidth={2} />
+            <Line type="monotone" dataKey="revenue" stroke="#16a34a" name={t('metrics.revenue_yen')} />
+            <Line type="monotone" dataKey="expenses" stroke="#ef4444" name={t('metrics.expenses_yen')} />
+            <Line type="monotone" dataKey="profit" stroke="#3b82f6" name={t('metrics.profit_yen')} strokeWidth={2} />
           </LineChart>
         )}
       </ResponsiveContainer>

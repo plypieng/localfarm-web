@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 type CropRecommendation = {
   id: string;
@@ -13,6 +14,7 @@ type CropRecommendation = {
 };
 
 export function AICropRecommendations() {
+  const t = useTranslations();
   const [selectedSeason, setSelectedSeason] = useState('summer');
 
   // Mock data for demonstration
@@ -146,7 +148,7 @@ export function AICropRecommendations() {
               : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
           }`}
         >
-          Spring
+          {t('seasons.spring')}
         </button>
         <button
           onClick={() => setSelectedSeason('summer')}
@@ -156,7 +158,7 @@ export function AICropRecommendations() {
               : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
           }`}
         >
-          Summer
+          {t('seasons.summer')}
         </button>
         <button
           onClick={() => setSelectedSeason('fall')}
@@ -166,7 +168,7 @@ export function AICropRecommendations() {
               : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
           }`}
         >
-          Fall
+          {t('seasons.fall')}
         </button>
         <button
           onClick={() => setSelectedSeason('winter')}
@@ -176,7 +178,7 @@ export function AICropRecommendations() {
               : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
           }`}
         >
-          Winter
+          {t('seasons.winter')}
         </button>
       </div>
 
@@ -187,24 +189,24 @@ export function AICropRecommendations() {
               <span className="text-2xl mr-2">{rec.icon}</span>
               <h3 className="font-medium flex-1">{rec.crop}</h3>
               <div className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
-                {rec.confidence}% match
+                {rec.confidence}% {t('crops.match')}
               </div>
             </div>
             <div className="p-3 space-y-2">
               <p className="text-sm">{rec.reasoning}</p>
               <div className="grid grid-cols-2 gap-2 text-sm mt-3">
                 <div>
-                  <span className="text-gray-500 block text-xs">Planting Window</span>
+                  <span className="text-gray-500 block text-xs">{t('crops.planting_window')}</span>
                   <span>{rec.plantingWindow}</span>
                 </div>
                 <div>
-                  <span className="text-gray-500 block text-xs">Potential Yield</span>
+                  <span className="text-gray-500 block text-xs">{t('crops.potential_yield')}</span>
                   <span>{rec.potentialYield}</span>
                 </div>
               </div>
               <div className="pt-2 flex justify-end">
                 <button className="text-primary-600 text-sm hover:underline">
-                  Add to planning
+                  {t('crops.add_to_planning')}
                 </button>
               </div>
             </div>
